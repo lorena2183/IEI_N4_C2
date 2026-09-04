@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página no encontrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fbcfe8 0%, #e9d5ff 100%);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .flower, .perfume, .pearls {
+            position: absolute;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .rose-1 { top: 8%; left: 6%; font-size: 3rem; animation-delay: 0s; }
+        .rose-2 { bottom: 10%; right: 8%; font-size: 3.5rem; animation-delay: 2s; }
+        .rose-3 { top: 12%; right: 10%; font-size: 2.5rem; animation-delay: 4s; }
+        .perfume { bottom: 12%; left: 8%; font-size: 3.5rem; animation-delay: 1s; }
+        .pearls { top: 5%; left: 50%; transform: translateX(-50%); font-size: 2rem; letter-spacing: 5px; opacity: 0.8; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* CAMBIO: estas dos clases son nuevas, reemplazan a .title, .subtitle, .lock-icon, input, .btn-enter, .error-message */
+        .error-404 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 6rem;          /* número grande */
+            color: #e11d48;           /* rojo */
+            line-height: 1;
+            margin-bottom: 0.8rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .error-text {
+            font-size: 0.85rem;       /* texto pequeño para la palabra pag no encontrada */
+            color: #701a75;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div class="decorations">
+        <span class="pearls">🤍🤍🤍🤍🤍</span>
+        <span class="flower rose-1">🌹</span>
+        <span class="flower rose-2">🌹</span>
+        <span class="flower rose-3">🌷</span>
+        <span class="perfume">🧴</span>
+    </div>
+
+    <div class="card">
+        <!-- CAMBIO: se elimina el candado y se coloca error 404 -->
+        <div class="error-404">404</div>
+        <p class="error-text">Página no encontrada</p>
+       
+    </div>
+
+    <!--se borra el inicio de sesion -->
+
+</body>
+</html>
