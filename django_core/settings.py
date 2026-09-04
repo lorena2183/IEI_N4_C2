@@ -23,7 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%uvmr$mcx9g$du(68kxv84%1ez$@(9ynsty(k(xyb)#)*awl(7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'django_core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],       #aqui realice el cambio!
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

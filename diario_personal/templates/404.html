@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página no encontrada</title>
+    <title>404 - Página no encontrada</title>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <style>
         * {
@@ -23,6 +23,7 @@
             position: relative;
         }
 
+        /* Elementos decorativos de fondo */
         .decorations {
             position: absolute;
             width: 100%;
@@ -49,6 +50,7 @@
             50% { transform: translateY(-12px) rotate(3deg); }
         }
 
+        /* Tarjeta Principal */
         .card {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(10px);
@@ -67,24 +69,57 @@
             transform: translateY(-3px);
         }
 
-        /* CAMBIO: estas dos clases son nuevas, reemplazan a .title, .subtitle, .lock-icon, input, .btn-enter, .error-message */
-        .error-404 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            font-size: 6rem;          /* número grande */
-            color: #e11d48;           /* rojo */
+        .error-code {
+            font-family: 'Alex Brush', cursive;
+            font-size: 6.5rem;
             line-height: 1;
-            margin-bottom: 0.8rem;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+            color: #9d174d;
+            margin-bottom: 0.6rem;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         .error-text {
-            font-size: 0.85rem;       /* texto pequeño para la palabra pag no encontrada */
+            font-size: 1rem;
+            font-weight: 500;
             color: #701a75;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.5px;
         }
-       
+
+        .lock-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Botón de vuelta al inicio */
+        .btn-enter {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #d946ef 100%);
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn-enter:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -98,13 +133,11 @@
     </div>
 
     <div class="card">
-        <!-- CAMBIO: se elimina el candado y se coloca error 404 -->
-        <div class="error-404">404</div>
-        <p class="error-text">Página no encontrada</p>
-       
+        <div class="lock-icon">💔</div>
+        <h1 class="error-code">404</h1>
+        <p class="error-text">No se puede encontrar la página</p>
+        <a href="/" class="btn-enter">Volver al inicio 🌷</a>
     </div>
-
-    <!--se borra el inicio de sesion -->
 
 </body>
 </html>
