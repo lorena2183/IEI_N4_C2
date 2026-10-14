@@ -26,3 +26,4 @@ urlpatterns = [
     path('', views.inicio),
     path('diario_personal/', include('diario_personal.urls'))
 ]
+
