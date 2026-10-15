@@ -66,4 +66,4 @@ class HistorialEntrada(models.Model):
     def __str__(self):
         return f"{self.entrada} : {self.estado_anterior} -> {self.estado_nuevo}"
     
-    ..
+    
