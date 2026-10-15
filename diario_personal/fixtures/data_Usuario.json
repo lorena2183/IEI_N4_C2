@@ -1,0 +1,26 @@
+[
+  {
+    "model": "diario_personal.usuario",
+    "pk": 1,
+    "fields": {
+      "nombre_usuario": "Caroline",
+      "email": "caroline@correo.cl",
+      "contrasena": "1414",
+      "fecha_nacimiento": "2005-03-15",
+      "created_at": "2026-10-14T10:00:00Z",
+      "updated_at": "2026-10-14T10:00:00Z"
+    }
+  },
+  {
+    "model": "diario_personal.usuario",
+    "pk": 2,
+    "fields": {
+      "nombre_usuario": "Constanza",
+      "email": "constanza@correo.cl",
+      "contrasena": "2020",
+      "fecha_nacimiento": "2006-09-10",
+      "created_at": "2026-10-14T10:00:00Z",
+      "updated_at": "2026-10-14T10:00:00Z"
+    }
+  }
+]
