@@ -10,7 +10,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = '__all__'
-        # __all__ serializa todas los atributos de la clase/modelo
+        
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +28,7 @@ class EntradaDiarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HistorialEntradaSerializer(serializers.ModelSerializer):
+     class Meta:
+        model = HistorialEntrada
+        fields = '__all__'
+       
