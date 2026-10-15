@@ -9,26 +9,22 @@ from .models import HistorialEntrada
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
-        fileds = ('nombre_usuario','email','contrasena','fecha_nacimiento')
+        fields = '__all__'
         # __all__ serializa todas los atributos de la clase/modelo
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Categoria
-        fileds = ('nombre','descripcion')
+        fields = '__all__'
 
 class EtiquetaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Etiqueta
-        fileds = ('nombre')
-        
+        fields = '__all__'
+
 class EntradaDiarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = EntradaDiario
-        fileds = ('usuario','categoria','etiquetas','titulo','contenido','fecha','hora','estado_animo','nivel_importancia')
-        
+        fields = '__all__'
+
 class HistorialEntradaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = HistorialEntrada
-        fileds = ('entrada','estado_anterior','estado_nuevo','fecha_cambio','comentario')
-        # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán

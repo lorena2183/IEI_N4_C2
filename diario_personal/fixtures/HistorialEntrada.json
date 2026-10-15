@@ -1,0 +1,46 @@
+[
+  {
+    "model": "diario_personal.historialentrada",
+    "pk": 1,
+    "fields": {
+      "entrada": 1,
+      "estado_anterior": "borrador",
+      "estado_nuevo": "publicado",
+      "fecha_cambio": "2026-10-10T21:45:00",
+      "comentario": "Terminé de escribir la entrada y la dejé publicada."
+    }
+  },
+  {
+    "model": "diario_personal.historialentrada",
+    "pk": 2,
+    "fields": {
+      "entrada": 2,
+      "estado_anterior": "borrador",
+      "estado_nuevo": "publicado",
+      "fecha_cambio": "2026-10-11T20:30:00",
+      "comentario": "Entrada revisada y publicada."
+    }
+  },
+  {
+    "model": "diario_personal.historialentrada",
+    "pk": 3,
+    "fields": {
+      "entrada": 2,
+      "estado_anterior": "publicado",
+      "estado_nuevo": "archivado",
+      "fecha_cambio": "2026-10-12T08:45:00",
+      "comentario": "Archivé la entrada porque ya pasó la semana de pruebas."
+    }
+  },
+  {
+    "model": "diario_personal.historialentrada",
+    "pk": 4,
+    "fields": {
+      "entrada": 3,
+      "estado_anterior": "borrador",
+      "estado_nuevo": "publicado",
+      "fecha_cambio": "2026-10-12T22:00:00",
+      "comentario": "Publiqué el recuerdo del almuerzo familiar."
+    }
+  }
+]

@@ -5,8 +5,8 @@
     "fields": {
       "nombre": "Personal",
       "descripcion": "Reflexiones y pensamientos del día a día",
-      "created_at": "2026-10-14T10:00:00Z",
-      "updated_at": "2026-10-14T10:00:00Z"
+      "created_at": "2026-10-14T10:00:00",
+      "updated_at": "2026-10-14T10:00:00"
     }
   },
   {
@@ -15,8 +15,8 @@
     "fields": {
       "nombre": "Estudios",
       "descripcion": "Avances, pruebas y trabajos de la universidad",
-      "created_at": "2026-10-14T10:00:00Z",
-      "updated_at": "2026-10-14T10:00:00Z"
+      "created_at": "2026-10-14T10:00:00",
+      "updated_at": "2026-10-14T10:00:00"
     }
   },
   {
@@ -25,8 +25,8 @@
     "fields": {
       "nombre": "Viajes",
       "descripcion": "Recuerdos y anécdotas de paseos y viajes",
-      "created_at": "2026-10-14T10:00:00Z",
-      "updated_at": "2026-10-14T10:00:00Z"
+      "created_at": "2026-10-14T10:00:00",
+      "updated_at": "2026-10-14T10:00:00"
     }
   }
 ]
