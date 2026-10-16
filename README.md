@@ -475,4 +475,4 @@ pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-> Cada vez que agreguemos una nueva librería actualizaremos el archivo de requerimientos con el comando *FREEZE*...
+> Cada vez que agreguemos una nueva librería actualizaremos el archivo de requerimientos con el comando *FREEZE*.
