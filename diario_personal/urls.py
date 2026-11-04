@@ -15,7 +15,7 @@ enrutador.register(r'HistorialEntrada', views.HistorialEntradaViewSet)
 
 
 urlpatterns = [
-    path('', include(enrutador.urls))
+ path('', include(enrutador.urls)),
 ]
 
 
