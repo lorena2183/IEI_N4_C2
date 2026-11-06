@@ -58,19 +58,19 @@ def salir(request):
 @login_requerido
 def lista_usuarios(request):
     usuarios = Usuario.objects.all().order_by('nombre_usuario')
-    return render(request, 'diario_personal/usuario_lista.html', {'usuarios': usuarios})
+    return render(request, 'diario_personal/usuarios/usuario_lista.html', {'usuarios': usuarios})
 
 
 @login_requerido
 def lista_categorias(request):
     categorias = Categoria.objects.all().order_by('nombre')
-    return render(request, 'diario_personal/categoria_lista.html', {'categorias': categorias})
+    return render(request, 'diario_personal/categorias/categoria_lista.html', {'categorias': categorias})
 
 
 @login_requerido
 def lista_etiquetas(request):
     etiquetas = Etiqueta.objects.all().order_by('nombre')
-    return render(request, 'diario_personal/etiqueta_lista.html', {'etiquetas': etiquetas})
+    return render(request, 'diario_personal/etiquetas/etiqueta_lista.html', {'etiquetas': etiquetas})
 
 
 @login_requerido
@@ -85,7 +85,7 @@ def lista_entradas(request):
                 .select_related('categoria')
                 .prefetch_related('etiquetas')
                 .order_by('-fecha', '-hora'))
-    return render(request, 'diario_personal/entrada_lista.html',
+    return render(request, 'diario_personal/entradas/entrada_lista.html',
                   {'entradas': entradas, 'usuario': usuario})
 
 
@@ -94,7 +94,7 @@ def lista_historial(request):
     historial = (HistorialEntrada.objects
                  .select_related('entrada')
                  .order_by('-fecha_cambio'))
-    return render(request, 'diario_personal/historial_lista.html', {'historial': historial})
+    return render(request, 'diario_personal/historial/historial_lista.html', {'historial': historial})
 
 
 # ---------- Formulario ----------
