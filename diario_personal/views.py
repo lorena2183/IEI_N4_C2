@@ -110,7 +110,7 @@ def crear_entrada(request):
             return redirect('entradas')
     else:
         form = EntradaDiarioForm()
-    return render(request, 'diario_personal/entrada_form.html', {'form': form})
+    return render(request, 'diario_personal/entradas/entradas_form.html', {'form': form})
 
 
 # ======================================================
