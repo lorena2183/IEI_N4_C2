@@ -24,6 +24,6 @@ from diario_personal import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.inicio, name='inicio'),
-    path('diario_personal/', include('diario_personal.urls')),
+    path('diario_personal/',include('diario_personal.urls'))
 ]
 
