@@ -16,6 +16,8 @@ class EntradaDiarioForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        
+        self.fields['categoria'].empty_label = '- Selecciona una opción -'   
       
         for campo in self.fields.values():
             campo.widget.attrs['class'] = 'form-control'
