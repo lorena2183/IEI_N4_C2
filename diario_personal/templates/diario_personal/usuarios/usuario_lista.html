@@ -1,0 +1,43 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block page_title %}Usuarios <span class="badge badge-rosa fs-6 align-middle">{{ usuarios|length }}</span>{% endblock %}
+
+{% block content %}
+<div class="card card-diario">
+    <div class="card-body">
+        {% if usuarios %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-datos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Creado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in usuarios %}
+                    <tr>
+                        <td>{{ u.id }}</td>
+                        <td class="fw-semibold">{{ u.nombre_usuario }}</td>
+                        <td>{{ u.email|default:"—" }}</td>
+                        <td data-order="{{ u.fecha_nacimiento|date:'Y-m-d' }}">{{ u.fecha_nacimiento|date:"d/m/Y" }}</td>
+                        <td data-order="{{ u.created_at|date:'Y-m-d H:i' }}">{{ u.created_at|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="vacio">
+            <span class="icono">👤</span>
+            No hay usuarios registrados todavía.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

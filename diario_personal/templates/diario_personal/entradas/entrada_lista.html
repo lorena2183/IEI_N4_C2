@@ -1,0 +1,61 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Mi diario{% endblock %}
+
+{% block page_title %}Mi diario <span class="badge badge-rosa fs-6 align-middle">{{ entradas|length }}</span>{% endblock %}
+
+{% block page_actions %}
+    <a href="{% url 'nueva_entrada' %}" class="btn btn-rosa">✨ Nueva entrada</a>
+{% endblock %}
+
+{% block content %}
+<div class="card card-diario">
+    <div class="card-body">
+        {% if entradas %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-datos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Título</th>
+                        <th>Categoría</th>
+                        <th>Etiquetas</th>
+                        <th>Estado de ánimo</th>
+                        <th>Importancia</th>
+                        <th>Contenido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in entradas %}
+                    <tr>
+                        <td data-order="{{ e.fecha|date:'Y-m-d' }} {{ e.hora|time:'H:i' }}" class="text-nowrap">
+                            {{ e.fecha|date:"d/m/Y" }}<br>
+                            <small class="text-secondary">{{ e.hora|time:"H:i" }}</small>
+                        </td>
+                        <td class="fw-semibold">{{ e.titulo }}</td>
+                        <td><span class="badge badge-rosa">{{ e.categoria.nombre }}</span></td>
+                        <td>
+                            {% for et in e.etiquetas.all %}
+                                <span class="badge badge-lila">#{{ et.nombre }}</span>
+                            {% empty %}
+                                <span class="text-secondary">—</span>
+                            {% endfor %}
+                        </td>
+                        <td>{{ e.estado_animo }}</td>
+                        <td class="text-center"><span class="badge bg-info">{{ e.nivel_importancia }}</span></td>
+                        <td class="small">{{ e.contenido }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="vacio">
+            <span class="icono">📔</span>
+            Aún no tienes entradas en tu diario.<br>
+            <a href="{% url 'nueva_entrada' %}" class="btn btn-rosa mt-3">✨ Escribir la primera</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

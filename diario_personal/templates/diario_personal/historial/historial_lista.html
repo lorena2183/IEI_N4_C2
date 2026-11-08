@@ -1,0 +1,50 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Historial{% endblock %}
+
+{% block page_title %}Historial <span class="badge badge-rosa fs-6 align-middle">{{ historial|length }}</span>{% endblock %}
+
+{% block content %}
+<div class="card card-diario">
+    <div class="card-body">
+        {% if historial %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-datos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Entrada</th>
+                        <th>Cambio de estado</th>
+                        <th>Fecha del cambio</th>
+                        <th>Comentario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in historial %}
+                    <tr>
+                        <td>{{ h.id }}</td>
+                        <td>
+                            <span class="fw-semibold">{{ h.entrada.titulo }}</span><br>
+                            <small class="text-secondary">{{ h.entrada.fecha|date:"d/m/Y" }}</small>
+                        </td>
+                        <td class="text-nowrap">
+                            <span class="badge bg-secondary">{{ h.estado_anterior }}</span>
+                            →
+                            <span class="badge badge-rosa">{{ h.estado_nuevo }}</span>
+                        </td>
+                        <td data-order="{{ h.fecha_cambio|date:'Y-m-d H:i' }}" class="text-nowrap">{{ h.fecha_cambio|date:"d/m/Y H:i" }}</td>
+                        <td class="small">{{ h.comentario|default:"—" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="vacio">
+            <span class="icono">🕑</span>
+            Todavía no hay cambios de estado registrados.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

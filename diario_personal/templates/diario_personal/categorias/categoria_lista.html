@@ -1,0 +1,41 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Categorías{% endblock %}
+
+{% block page_title %}Categorías <span class="badge badge-rosa fs-6 align-middle">{{ categorias|length }}</span>{% endblock %}
+
+{% block content %}
+<div class="card card-diario">
+    <div class="card-body">
+        {% if categorias %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-datos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Creada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in categorias %}
+                    <tr>
+                        <td>{{ c.id }}</td>
+                        <td><span class="badge badge-rosa fs-6">{{ c.nombre }}</span></td>
+                        <td>{{ c.descripcion }}</td>
+                        <td data-order="{{ c.created_at|date:'Y-m-d H:i' }}">{{ c.created_at|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="vacio">
+            <span class="icono">🗂️</span>
+            No hay categorías registradas todavía.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

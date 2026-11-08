@@ -1,0 +1,39 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Etiquetas{% endblock %}
+
+{% block page_title %}Etiquetas <span class="badge badge-rosa fs-6 align-middle">{{ etiquetas|length }}</span>{% endblock %}
+
+{% block content %}
+<div class="card card-diario">
+    <div class="card-body">
+        {% if etiquetas %}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle tabla-datos" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Etiqueta</th>
+                        <th>Creada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in etiquetas %}
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td><span class="badge badge-lila fs-6">#{{ e.nombre }}</span></td>
+                        <td data-order="{{ e.created_at|date:'Y-m-d H:i' }}">{{ e.created_at|date:"d/m/Y H:i" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="vacio">
+            <span class="icono">🏷️</span>
+            No hay etiquetas registradas todavía.
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

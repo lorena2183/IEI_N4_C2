@@ -1,0 +1,155 @@
+{% load static %}<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inicio{% endblock %} · Diario Personal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/datatables.css' %}">
+
+    <style>
+        :root { --rosa: #ec4899; --fucsia: #c026d3; --morado: #7e22ce; }
+
+        /* Barra de navegación */
+        .navbar-diario {
+            background: linear-gradient(135deg, var(--rosa) 0%, var(--fucsia) 50%, var(--morado) 100%);
+            box-shadow: 0 4px 15px rgba(126, 34, 206, 0.35);
+        }
+        .navbar-diario .navbar-brand {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2rem;
+            line-height: 1;
+            color: #fff;
+        }
+        .navbar-diario .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 0.4rem 1rem;
+        }
+        .navbar-diario .nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.15); }
+        .navbar-diario .nav-link.active { color: #fff; background: rgba(158, 108, 108, 0.25); font-weight: 600; }
+        .navbar-diario .navbar-toggler { border-color: rgba(255, 255, 255, 0.6); }
+
+        /* Títulos de página */
+        .titulo-pagina {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.6rem;
+            color: var(--rosa);
+            margin: 0;
+        }
+        .titulo-pagina .badge { font-family: var(--bs-body-font-family); }
+
+        /* Tarjeta que contiene las tablas */
+        .card-diario {
+            border: 1px solid rgba(236, 72, 153, 0.35);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(126, 34, 206, 0.2);
+        }
+
+        /* Botón y etiquetas de color */
+        .btn-rosa {
+            background: linear-gradient(135deg, var(--rosa) 0%, var(--fucsia) 50%, var(--morado) 100%);
+            border: 0;
+            color: #fff;
+            border-radius: 50px;
+            padding: 0.5rem 1.4rem;
+            transition: all 0.3s ease;
+        }
+        .btn-rosa:hover { color: #fff; opacity: 0.92; transform: scale(1.03); }
+        .badge-rosa { background: var(--rosa); color: #fff; }
+        .badge-lila { background: var(--morado); color: #fff; }
+
+        /* Estado vacío */
+        .vacio { text-align: center; padding: 2.5rem 1rem; color: var(--bs-secondary-color); }
+        .vacio .icono { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    {% with actual=request.resolver_match.url_name %}
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-diario mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'entradas' %}">Diario Personal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                    aria-expanded="false" aria-label="Mostrar menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {% if actual == 'entradas' or actual == 'nueva_entrada' %}active{% endif %}"
+                           href="{% url 'entradas' %}">📔 Mi diario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if actual == 'lista_categorias' %}active{% endif %}"
+                           href="{% url 'lista_categorias' %}">🗂️ Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if actual == 'lista_etiquetas' %}active{% endif %}"
+                           href="{% url 'lista_etiquetas' %}">🏷️ Etiquetas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if actual == 'lista_historial' %}active{% endif %}"
+                           href="{% url 'lista_historial' %}">🕑 Historial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if actual == 'lista_usuarios' %}active{% endif %}"
+                           href="{% url 'lista_usuarios' %}">👤 Usuarios</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-3">
+                    {% if usuario %}
+                        <span class="navbar-text text-white">Hola, {{ usuario.nombre_usuario }} 🌷</span>
+                    {% endif %}
+                    <a class="btn btn-outline-light btn-sm rounded-pill px-3" href="{% url 'salir' %}">Salir</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% endwith %}
+
+    <main class="container pb-4">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <h1 class="titulo-pagina">{% block page_title %}{% endblock %}</h1>
+            <div>{% block page_actions %}{% endblock %}</div>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="text-center text-secondary small py-4">
+        🌷 Diario Personal · {% now "Y" %}
+    </footer>
+
+    <script src="{% static 'js/jQuery v4.0.0.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/datatables.js' %}"></script>
+    <script>
+        // Todas las tablas con la clase "tabla-datos" se convierten en DataTables (en español).
+        // order: [] respeta el orden con que las vistas envían los datos.
+        document.querySelectorAll('table.tabla-datos').forEach(function (tabla) {
+            new DataTable(tabla, {
+                order: [],
+                pageLength: 10,
+                language: {
+                    search: 'Buscar:',
+                    lengthMenu: 'Mostrar _MENU_ registros',
+                    info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+                    infoEmpty: 'Sin registros',
+                    infoFiltered: '(filtrado de _MAX_ registros)',
+                    zeroRecords: 'No se encontraron resultados',
+                    emptyTable: 'No hay datos para mostrar',
+                    paginate: { first: 'Primero', last: 'Último', next: 'Siguiente', previous: 'Anterior' }
+                }
+            });
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

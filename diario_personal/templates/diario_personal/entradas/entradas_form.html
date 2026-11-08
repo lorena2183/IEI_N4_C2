@@ -1,0 +1,79 @@
+{% extends "diario_personal/base.html" %}
+
+{% block title %}Nueva entrada{% endblock %}
+
+{% block page_title %}Nueva entrada{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card card-diario">
+            <div class="card-body p-4">
+                <form method="post" novalidate>
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.titulo.id_for_label }}">Título</label>
+                            {{ form.titulo }}
+                            {% for error in form.titulo.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.categoria.id_for_label }}">Categoría</label>
+                            {{ form.categoria }}
+                            {% for error in form.categoria.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.etiquetas.id_for_label }}">Etiquetas</label>
+                            {{ form.etiquetas }}
+                            <div class="form-text">Mantén Ctrl (⌘ en Mac) para elegir varias.</div>
+                            {% for error in form.etiquetas.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.fecha.id_for_label }}">Fecha</label>
+                            {{ form.fecha }}
+                            {% for error in form.fecha.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.hora.id_for_label }}">Hora</label>
+                            {{ form.hora }}
+                            {% for error in form.hora.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.estado_animo.id_for_label }}">Estado de ánimo</label>
+                            {{ form.estado_animo }}
+                            {% for error in form.estado_animo.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.nivel_importancia.id_for_label }}">Nivel de importancia</label>
+                            {{ form.nivel_importancia }}
+                            {% for error in form.nivel_importancia.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label" for="{{ form.contenido.id_for_label }}">Contenido</label>
+                            {{ form.contenido }}
+                            {% for error in form.contenido.errors %}<div class="text-danger small mt-1">{{ error }}</div>{% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a href="{% url 'entradas' %}" class="btn btn-outline-light rounded-pill px-4">Cancelar</a>
+                        <button type="submit" class="btn btn-rosa">💾 Guardar entrada</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
